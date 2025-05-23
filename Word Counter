@@ -1,0 +1,16 @@
+while True:    
+    text = input("Enter some text: \n")
+    text = text.strip()
+    char_count = len(text.replace(" ", ""))
+    words = text.split()
+    word_count = len(words)
+    unique_words = set(words)
+    unique_count = len(unique_words)
+    print("\n--- Word Count Results ---")
+    print(f"Total characters (no spaces): {char_count}")
+    print(f"Total words: {word_count}")
+    print(f"Unique words: {unique_count}")
+    use_again = input("Do you want to start again (y/n) ").lower()
+    if use_again == "n":
+        print("Thank you for using The Best Word Counter!")
+        break
