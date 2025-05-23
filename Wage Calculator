@@ -1,0 +1,11 @@
+while True:
+    job = input("Enter job title: ")
+    wage  = int(input("How much are you paid yearly?(No decimals!) "))
+    daily = wage / 365
+    weekly = wage / 52.1429
+    monthly = wage / 12
+    print(f"You're paid ${daily} every day, ${weekly} every week and ${monthly} every month!")
+    play_again = input("Would you like to try another job (y/n) ? ").lower()
+    if play_again != "y":
+        print("Thank you for using the Wage Calculator!")
+        break
