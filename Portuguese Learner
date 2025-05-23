@@ -1,0 +1,60 @@
+# Learn Portuguese
+import random
+
+# Words to learn
+words = [
+    {"portuguese": "o", "english": ["the"]},
+    {"portuguese": "a", "english": ["the"]},
+    {"portuguese": "e", "english": ["and"]},
+    {"portuguese": "de", "english": ["of"]},
+    {"portuguese": "que", "english": ["that"]},
+    {"portuguese": "do", "english": ["of the"]},
+    {"portuguese": "da", "english": ["of the"]},
+    {"portuguese": "em", "english": ["in", "on"]},
+    {"portuguese": "um", "english": ["a", "an"]},
+    {"portuguese": "para", "english": ["for", "to"]},
+    {"portuguese": "é", "english": ["is"]},
+    {"portuguese": "com", "english": ["with"]},
+    {"portuguese": "não", "english": ["no", "not"]},
+    {"portuguese": "uma", "english": ["a", "an"]},
+    {"portuguese": "os", "english": ["the (plural)"]},
+    {"portuguese": "no", "english": ["in the"]},
+    {"portuguese": "se", "english": ["if", "oneself"]},
+    {"portuguese": "na", "english": ["in the"]},
+    {"portuguese": "por", "english": ["by", "through"]},
+    {"portuguese": "mais", "english": ["more"]},
+    # ... (You can continue the rest of your word list using the same format)
+]
+
+def quiz_user(words):
+    random.shuffle(words)
+    score = 0
+    total_answered = 0
+
+    for word in words:
+        print(f"\nWhat is the English translation of '{word['portuguese']}'?")
+        user_answer = input("Your answer: ").strip().lower()
+        total_answered += 1
+
+        correct_answers = [ans.lower() for ans in word['english']]
+        
+        if user_answer in correct_answers:
+            print("Correct!!")
+            score += 1
+        else:
+            print(f"Wrong!!! The correct answer(s): {', '.join(word['english'])}")
+
+        continue_quiz = input("Do you want to continue? (y/n): ").strip().lower()
+        if continue_quiz != 'y':
+            break
+
+    print(f"\nQuiz complete! Your score: {score}/{total_answered}")
+
+def main():
+    print("Welcome to the Language Learning Flashcards App!")
+    input("Press Enter to start the quiz...")
+    quiz_user(words)
+
+if __name__ == "__main__":
+    main()
+
