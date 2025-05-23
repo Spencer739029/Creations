@@ -1,0 +1,63 @@
+# Trivia Game
+import random
+
+# Possible questions to be asked
+questions = [
+    {"q": "What is the capital of France?", "a": "Paris"},
+    {"q": "What is 9*9?", "a": "81"},
+    {"q": "Who came up with the 'Theory of Relativity'?", "a": "Albert Einstein"},
+    {"q": "Which animated movie released in the '90s featured the song 'A Whole New World'?", "a": "Aladdin"},
+    {"q": "What is the name for a period of two weeks?", "a": "A fortnight"},
+    {"q": "What is the official language of Brazil?", "a": "Portuguese"},
+    {"q": "What is the national flower of Japan?", "a": "Cherry Blossom"},
+    {"q": "Who wrote 'Romeo and Juliet'?", "a": "William Shakespeare"},
+    {"q": "What planet is known as the Red Planet?", "a": "Mars"},
+    {"q": "How many continents are there on Earth?", "a": "7"},
+    {"q": "What is the capital city of Canada?", "a": "Ottawa"},
+    {"q": "Which ocean is the largest?", "a": "Pacific"},
+    {"q": "Who discovered penicillin?", "a": "Alexander Fleming"},
+    {"q": "What gas do plants absorb from the atmosphere?", "a": "Carbon dioxide"},
+    {"q": "Which language has the most native speakers worldwide?", "a": "Mandarin Chinese"},
+    {"q": "How many degrees are in a circle?", "a": "360"},
+    {"q": "Which organ pumps blood throughout the body?", "a": "Heart"},
+    {"q": "Who is known as the Father of Computers?", "a": "Charles Babbage"},
+    {"q": "What is the longest river in the world?", "a": "Nile"},
+    {"q": "How many legs does a spider have?", "a": "8"},
+    {"q": "Which planet is closest to the Sun?", "a": "Mercury"},
+    {"q": "What is the largest mammal in the world?", "a": "Blue Whale"},
+    {"q": "Which country is famous for the Taj Mahal?", "a": "India"},
+    {"q": "What currency is used in Japan?", "a": "Yen"},
+    {"q": "Who invented the telephone?", "a": "Alexander Graham Bell"},
+    {"q": "Which sport is known as the 'king of sports'?", "a": "Soccer"},
+    {"q": "What is the main language spoken in Australia?", "a": "English"},
+    {"q": "What do bees make?", "a": "Honey"},
+    {"q": "Which planet is famous for its rings?", "a": "Saturn"},
+    {"q": "How many colors are there in a rainbow?", "a": "7"},
+    {"q": "What is the boiling point of water in Celsius?", "a": "100"},
+    {"q": "What is the largest continent?", "a": "Asia"},
+    {"q": "Which country hosted the 2016 Summer Olympics?", "a": "Brazil"},
+    {"q": "Who painted the ceiling of the Sistine Chapel?", "a": "Michelangelo"},
+    {"q": "Which bird is a universal symbol of peace?", "a": "Dove"},
+    {"q": "What is the hardest natural substance?", "a": "Diamond"},
+    {"q": "What is H2O commonly known as?", "a": "Water"},
+    {"q": "What do you call a baby goat?", "a": "Kid"},
+    {"q": "What is the main ingredient in bread?", "a": "Flour"},
+    {"q": "Which instrument has 88 keys?", "a": "Piano"}
+]
+
+while True:
+    random_question = random.choice(questions)
+
+    print("\nQuestion:", random_question["q"])
+    user_answer = input("Your answer: ").strip()
+
+    if user_answer.lower() == random_question["a"].lower():
+        print("Correct!")
+    else:
+        print(f"Incorrect. The correct answer was: {random_question['a']}")
+
+    play_again = input("Do you want to play again (y/n)? ").lower()
+    if play_again != "y":
+        print("Thank you for playing!")
+        break
+
