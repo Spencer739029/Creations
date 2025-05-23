@@ -1,0 +1,21 @@
+#  Calculator
+value1 = int(input("Enter a number: "))
+value2 = int(input("Enter another: "))
+value3 = int(input("Enter a third(put '0' if you dont want another): "))
+function = input("What do you want to do with these numbers?(add, subtract, multiply, divide): ")
+if function == "add":
+    print("Result:", value1 + value2 + value3)
+elif function == "subtract":
+    print("Result:", value1 - value2 - value3)
+elif function == "multiply":
+    print("Result:", value1 * value2 * value3)
+elif function == "divide":
+    if value1 != 0 and value2 != 0 and value3 != 0:
+        print("Result:", value1 / value2 / value3)
+    else:
+        print("Cannot divide by zero")
+else:
+    print("Invalid operation")
+        
+
+
