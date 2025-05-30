@@ -1,0 +1,46 @@
+import random
+
+while True:
+    print("Try to guess the 4-digit code!")
+    attempts = 10
+
+    # Generate 4-digit code
+    password = [random.randint(0, 9) for _ in range(4)]
+    number_display = ['_' for _ in password]
+
+    while attempts > 0 and '_' in number_display:
+        print("\n" + ' '.join(number_display))
+        guess = input("Enter your 4-digit guess: ").strip()
+
+        # Validate input
+        if not guess.isdigit() or len(guess) != 4:
+            print("Please enter exactly 4 digits.")
+            continue
+
+        guess_digits = [int(d) for d in guess]
+
+        # Reveal correct digits in the correct position
+        for i in range(4):
+            if guess_digits[i] == password[i]:
+                number_display[i] = str(password[i])
+
+        # Check if the full guess is correct
+        if guess_digits == password:
+            break
+        else:
+            attempts -= 1
+            print("Incorrect guess. " + str(attempts) + " attempts left.")
+
+    if '_' not in number_display:
+        print("You guessed the code!")
+        print(' '.join(number_display))
+        print("You survived with: " + str(attempts) + " attempts left!")
+    else:
+        print("You ran out of attempts. The code was: " + ''.join(str(x) for x in password))
+        print("You lost!")
+
+    play_again = input("Would you like to play again (y/n)? ").lower()
+    if play_again != "y":
+        print("Thank you for playing!")
+        break
+
