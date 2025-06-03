@@ -1,0 +1,32 @@
+import random
+import time
+# Magic 8 Ball Program
+
+input("What do you want to say: ")
+
+
+# Simulate thinking time
+print("Thinking...")
+time.sleep(2)  # Wait for 2 seconds
+
+#Randomly select a response from the list
+random_say = random.choice([
+    "Try again later",
+    "I don't know",
+    "I don't care",
+    "Yes",
+    "No",
+    "Maybe",
+    "Ask again",
+    "I don't think so",
+    "I think so",
+    "Absolutely",
+    "Definitely not",
+    "It is certain",
+    "It is decidedly so",
+    "Without a doubt",
+    "Nope",
+
+#Print the selected response
+])
+print(random_say)
