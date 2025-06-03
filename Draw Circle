@@ -1,0 +1,42 @@
+import pyautogui
+import keyboard
+import math
+import time
+
+# === SETTINGS ===
+CENTER_X = 684          # X-coordinate of white dot
+CENTER_Y = 378          # Y-coordinate of white dot
+RADIUS = 200            # Circle radius in pixels
+STEPS = 120             # Smoothness
+DELAY = 0            # Delay between points
+HOTKEY = "ctrl+q"       # Trigger key
+# ==================
+
+def draw_circle():
+    # Move to starting point (top of circle)
+    start_x = CENTER_X
+    start_y = CENTER_Y - RADIUS
+    pyautogui.moveTo(start_x, start_y)
+    time.sleep(0)
+
+    # Click and hold
+    pyautogui.mouseDown()
+
+    for i in range(STEPS + 1):
+        angle = 2 * math.pi * i / STEPS
+        x = CENTER_X + RADIUS * math.cos(angle)
+        y = CENTER_Y + RADIUS * math.sin(angle)
+        pyautogui.moveTo(x, y, duration=DELAY)
+
+    pyautogui.mouseUp()
+    print("✔️  Circle drawn on neal.fun")
+
+def on_hotkey():
+    print("Hotkey pressed. Drawing in 1 second...")
+    time.sleep(1)
+    draw_circle()
+
+print(f"📌 Script ready. Move browser to same position. Press {HOTKEY.upper()} to draw.")
+keyboard.add_hotkey(HOTKEY, on_hotkey)
+
+keyboard.wait()
