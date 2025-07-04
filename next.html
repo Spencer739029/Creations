@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Maker</title>
+        <link rel="stylesheet" href="next.css">
+</head>
+<body>
+    <div class="title">
+        <h1 contenteditable="true" id="title">My Journal</h1>
+        <p>
+            <a href="previous.html">Previous Entries</a>
+        </p>
+        <p>
+            Also try:
+        <a href="index.html">To-Do List</a>.
+        </p>
+    </div>
+    <div class="container">
+            <h1 contenteditable="true">Title✏️</h1>
+                <input id="date" type="date">
+        <textarea id="autoExpand" placeholder="Start typing..."></textarea>
+        <style>
+        textarea {
+        width: 100%;
+        min-height: 50px;
+        padding: 10px;
+        font-size: 16px;
+        resize: none;
+        overflow: hidden;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+  </style>
+    </div>
+    <script src="next.js"></script>
+
+  <script>
+    const textarea = document.getElementById('autoExpand');
+
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto'; // Reset height
+      textarea.style.height = textarea.scrollHeight + 'px'; // Set to scroll height
+    });
+  </script>
+
+</body>
+
+</html>
