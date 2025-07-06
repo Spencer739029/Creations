@@ -1,30 +1,71 @@
-.title{
-  background-image: linear-gradient(to right, rgb(92, 168, 255), rgb(39, 39, 255));
-  font-family: Arial, Helvetica, sans-serif;
-  align-items: top;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);;
-  padding: 1%;
-  margin-top: 1px;
-  border-radius: 5px;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 }
-.container{
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  border-radius: 5px;
-  margin-top: 10px;
-    background-image: linear-gradient(to right, rgb(92, 168, 255), rgb(39, 39, 255));
+body{
+    background: #001e4d;
 }
-.button{
-  border-radius: 5px;
+.app{
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    padding: 30px;
 }
-input{
-  border-radius: 5px;
+.app h1{
+    font-size: 25px;
+    color: #001e4d;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
 }
-p{
-  border-radius: 5px;
-  font-weight: 700;
+.quiz{
+    padding: 20px 0;
+}
+.quiz h2{
+    font-size: 18px;
+    color: #001e4d;
+    font-weight: 600;
+}
+.btn{
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn:hover:not([disabled]){
+    background: #222;
+    color: #fff;
+    transform: scale(1.05);
+}
+.btn:disabled{
+    cursor: no-drop;
+}
+#next-btn{
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+}
+.correct{
+    background: #9aeabc;
+}
+.incorrect{
+    background: #ff9393;
 }

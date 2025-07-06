@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
+    <title>Quiz App</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="title">
-        <h1 id="title">To-Do List</h1>
-        <p>
-            Also try:
-        <a href="next.html">Journal Maker</a>.
-        </p>
+    <div class="app">
+        <h1>Simple Quiz</h1>
+        <div class="quiz">
+            <h2 id="question">Question goes here</h2>
+            <div id="answer-buttons">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            <button id="next-btn">Next</button>
+        </div>
     </div>
-    <div class="container">
-        <h2>Items</h2>
-        <div id="items"></div>
-        <input id="itemInput" type="text" placeholder="Add an item"/>
-        <button class="button" onclick="addItem()">Add Item</button>
-    </div>
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
