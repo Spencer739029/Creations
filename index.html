@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Password Generator</title>
+    <title>Text to Speech Converter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Generate a <br><span>Random Password</span></h1>
-    <div class="display">
-        <input type="text" id="password" placeholder="Password">
-        <img src="rpg_img\images\copy.png" onclick="copyPassword()">
-    </div>
-    <button onclick="createPassword()"><img src="rpg_img\images\generate.png">Generate Password</button>
-</div>
 
-<script src="main.js"></script>
+<div class="hero">
+    <h1>Text to Speech <span>Converter</span></h1>
+    <textarea placeholder="Write anything here..."></textarea>
+    <div class="row">
+        <select></select>
+        <button><img src="images\play.png">Listen</button>
+    </div>
+</div>
     
+<script src="main.js"></script>
 </body>
 </html>

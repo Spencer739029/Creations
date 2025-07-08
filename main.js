@@ -1,28 +1,41 @@
-const passwordBox = document.getElementById("password");
-const length = 12;
+const speech = new SpeechSynthesisUtterance();
+const voiceSelect = document.querySelector("select");
+const textarea = document.querySelector("textarea");
+const button = document.querySelector("button");
 
-const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-const lowerCase = "abcdefghijklmnopqrstuvwxyz"
-const numbers = "0123456789"
-const symbols = "!@#$%^)&*(_[]{}/?<>-=+";
+let voices = [];
 
-const allChars = upperCase + lowerCase + numbers + symbols;
+function populateVoices() {
+    voices = window.speechSynthesis.getVoices();
+    voiceSelect.innerHTML = ""; // Clear existing options
 
-function createPassword(){
-    let password = "";
-    password += upperCase[Math.floor(Math.random() * upperCase.length)];
-    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    password += numbers[Math.floor(Math.random() * numbers.length)];
-    password += symbols[Math.floor(Math.random() * symbols.length)];
+    voices.forEach((voice, i) => {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
+    });
 
-    while(length > password.length){
-        password += allChars[Math.floor(Math.random() * allChars.length)];
+    // Set default voice
+    if (voices.length > 0) {
+        speech.voice = voices[0];
     }
-    passwordBox.value = password;
 }
 
-function copyPassword(){
-    passwordBox.select();
-    navigator.clipboard.writeText(passwordBox.value)
-        .catch(err => console.error('Failed to copy: ', err));
-}
+window.speechSynthesis.onvoiceschanged = populateVoices;
+
+// Handle voice selection change
+voiceSelect.addEventListener("change", () => {
+    const selectedIndex = parseInt(voiceSelect.value);
+    if (!isNaN(selectedIndex) && voices[selectedIndex]) {
+        speech.voice = voices[selectedIndex];
+    }
+});
+
+// Handle button click
+button.addEventListener("click", () => {
+    speech.text = textarea.value.trim();
+    if (speech.text) {
+        window.speechSynthesis.speak(speech);
+    }
+});
