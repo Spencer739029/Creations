@@ -1,31 +1,72 @@
-let progress = document.getElementById("progress");
-let song = document.getElementById("song");
-let ctrlIcon = document.getElementById("ctrlIcon");
+let currentMoleTile;
+let currentPlantTile;
+let score = 0;
+let gameOver = false;
 
-song.onloadedmetadata = function () {
-    progress.max = song.duration;
-    progress.value = song.currentTime;
-};
-
-function playPause() {
-    if (ctrlIcon.classList.contains("fa-pause")) {
-        song.pause();
-        ctrlIcon.classList.remove("fa-pause");
-        ctrlIcon.classList.add("fa-play");
-    } else {
-        song.play();
-        ctrlIcon.classList.add("fa-pause");
-        ctrlIcon.classList.remove("fa-play");
-    }
+window.onload = function(){
+    setGame();
 }
 
-// Start updating progress when the song plays
-song.addEventListener("play", () => {
-    setInterval(() => {
-        progress.value = song.currentTime;
-    }, 500);
-});
+function setGame(){
+    for(let i =0; i < 9; i++){
+        let tile = document.createElement("div")
+        tile.id = i.toString();
+        tile.addEventListener("click", selectTile)
+        document.getElementById("board").appendChild(tile);
+    }
+    setInterval(setMole, 1000);
+    setInterval(setPlant, 2000);
+}
 
-progress.onchange = function () {
-    song.currentTime = progress.value;
-};
+function getRandomTile(){
+    let num = Math.floor(Math.random() * 9);
+    return num.toString();
+}
+
+function setMole(){
+    if (gameOver){
+        return;
+    }
+    if (currentMoleTile){
+        currentMoleTile.innerHTML = ""
+    }
+
+    let mole = document.createElement("img");
+    mole.src = "monty-mole.png";
+    let num = getRandomTile();
+    if (currentPlantTile && currentPlantTile.id == num){
+        return;
+    }
+    currentMoleTile = document.getElementById(num);
+    currentMoleTile.appendChild(mole);
+}
+
+function setPlant(){
+    if (gameOver){
+        return;
+    }
+    if (currentPlantTile) {
+        currentPlantTile.innerHTML = ""
+    }
+    let plant = document.createElement("img");
+    plant.src = "piranha-plant.png";
+    let num = getRandomTile();
+    if (currentMoleTile && currentMoleTile.id == num){
+        return;
+    }
+    currentPlantTile = document.getElementById(num);
+    currentPlantTile.appendChild(plant);
+}
+function selectTile(){
+    if (gameOver){
+        return
+    }
+    if (this == currentMoleTile){
+        score += 10;
+        document.getElementById("score").innerHTML = score.toString();
+    }
+    else if (this == currentPlantTile){
+        document.getElementById("score").innerHTML = "GAME OVER: " + score.toString();
+        gameOver = true
+    }
+}
